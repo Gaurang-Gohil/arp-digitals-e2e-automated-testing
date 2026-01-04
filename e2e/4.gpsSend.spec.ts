@@ -31,7 +31,7 @@ test('Testing gps Send', async ({ page }) => {
         for (const country of countryList as (keyof typeof countryCurrencyThresholds)[]) {
             // Log the current country
             currentTestingCountry = country;
-            console.log(`Testing for ${country} -- 🧪🌍🗺️`)
+            console.log(`  Testing for ${country} -- 🧪🌍🗺️`)
 
             // Find the title send 
             const title = await page.getByRole('heading', { name: `Send`, exact: false });
@@ -105,7 +105,7 @@ test('Testing gps Send', async ({ page }) => {
                 }
                 console.log(`Test Successful for ${currency} -- 🤑`);
             }
-            console.log(`Test Successful for ${country} -- 🗿`);
+            console.log(`  Test Successful for ${country} -- 🗿`);
         }
     }
     catch (err) {

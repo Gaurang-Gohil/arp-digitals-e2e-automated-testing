@@ -11,7 +11,7 @@ test('Global Search with ctrl + K', async ({ page }) => {
     console.log("\n Loging in via API -- 🔐")
     const login = new loginViaApi(page)
     await login.executeLogin(credentials.email, credentials.password);
-    console.log("Loging Successful -- ✅\n")
+    console.log("Logging Successful -- ✅\n")
 
 
     for (const [sectionName, sectionRoute] of Object.entries(sectionNameRoutes)) {
@@ -26,7 +26,7 @@ test('Global Search with ctrl + K', async ({ page }) => {
             waitUntil: 'load',
             timeout: 30000
         });
-        console.log(`Found ${sectionName} -- 🙌 \n`);
+        console.log(`  Found ${sectionName} -- 🙌 \n`);
 
         // Wait for the title to be visible
         if (sectionName != 'Overview') {
