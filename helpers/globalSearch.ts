@@ -10,8 +10,9 @@ export default class GlobalSearch {
     }
 
     async search(sectionName: string) {
-        
+
         await this.page.keyboard.press('Control+K');
+        console.log(`Searching ${sectionName} -- 🔍`);
         
         // Confirm if the command list is visible or not    
         const searchInput = await this.page.getByPlaceholder('Search or jump to...');

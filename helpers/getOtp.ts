@@ -6,6 +6,7 @@ const getOtp = async (email:string, password:string) => {
 
     try {
         // Get Token
+        console.log("Fetchin OTP --- ⏳")
         const tokenRes = await fetch('https://api.mail.tm/token', {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -33,6 +34,7 @@ const getOtp = async (email:string, password:string) => {
                 const match = detailRes.text.match(/\d{6}/);
                 if (match) {
                     otp = match[0];
+                    console.log(`OTP fetched successfully -- 🎊 \n OTP is ${otp} -- 🤫`)
                     break; 
                 }
             }
