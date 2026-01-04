@@ -8,10 +8,10 @@ test('Testing gps Send', async ({ page }) => {
     test.setTimeout(300000)
 
     // Login in the funded account via funded account 
-    console.log("Loging in via API -- 🔐")
+    console.log("\n Loging in via API -- 🔐")
     const login = new loginViaApi(page);
     await login.executeLogin(creds.email, creds.password);
-    console.log("Loging Successful -- ✅")
+    console.log("Loging Successful -- ✅ \n")
 
     // Get the send button
     await page.getByRole('button', { name: 'Send' }).click()

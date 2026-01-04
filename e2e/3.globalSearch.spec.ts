@@ -7,10 +7,10 @@ import GlobalSearch from "../helpers/globalSearch";
 test('Global Search with ctrl + K', async ({ page }) => {
     test.setTimeout(50000);
     // login via API 
-    console.log("Loging in via API -- 🔐")
+    console.log("\n Loging in via API -- 🔐")
     const login = new loginViaApi(page)
     await login.executeLogin(credentials.email, credentials.password);
-    console.log("Loging Successful -- ✅")
+    console.log("Loging Successful -- ✅\n")
     console.log("Testing global search -- 🌎 🔍")
 
     
@@ -33,7 +33,7 @@ test('Global Search with ctrl + K', async ({ page }) => {
             await expect(title).toBeVisible({timeout: 10000});
         }
     }
-    console.log("Global search successful -- ✅\n\n");
+    console.log("Global search successful -- ✅ \n \n");
 })
 
 const sectionNameRoutes = {

@@ -6,7 +6,7 @@ import credentials from "../constants/newRandomCreds";
 test('Sign In ', async ({ page }) => {
     // Login via API
     const login = new loginViaApi(page);
-    console.log("Signing In -- 🔐");
+    console.log("\nSigning In -- 🔐");
     await login.executeLogin(credentials.email, credentials.password);
-    console.log("Signing In Successful -- ✅ \n\n");
+    console.log("Signing In Successful -- ✅ \n \n");
 })
