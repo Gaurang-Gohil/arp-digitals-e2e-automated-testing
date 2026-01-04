@@ -6,7 +6,7 @@ import countryCurrencyThresholds from "../constants/countryCurrencyThresholds";
 
 test('Testing gps Send', async ({ page }) => {
     test.setTimeout(300000)
-
+    console.log("\n \t Tesing GPS send -- 💸")
     // Login in the funded account via funded account 
     console.log("\n Loging in via API -- 🔐")
     const login = new loginViaApi(page);
@@ -87,7 +87,6 @@ test('Testing gps Send', async ({ page }) => {
 
                 const search = new GlobalSearch(page);
                 await search.search("Send Money");
-                console.log("Found Send Money -- 🙌\n")
 
                 if (countryCurrencyThresholds[country].Recipient === "Rania" && currency === "USDC") {
                     break;

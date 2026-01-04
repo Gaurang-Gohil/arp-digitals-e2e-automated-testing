@@ -5,7 +5,7 @@ import getOtp from '../helpers/getOtp';
 import { randomBytes } from 'node:crypto';
 
 test('Sign Up', async ({ page }) => {
-    console.log("Testing Sign up -- ⚙️")
+    console.log("\n \t Testing Sign up -- ⚙️")
     // Go to the login url 
     await page.goto('https://platform.dev.arpdigital.io/');
     await expect(page).toHaveTitle('ARP Digital - Client Dashboard');
@@ -61,7 +61,7 @@ test('Sign Up', async ({ page }) => {
 
     // Final Assertion
     await expect(page).toHaveURL(/.*wallet/, { timeout: 20000 });
-    console.log(`Org created successfull -- ✅ \n Sign Up successfull -- ✅\n \n`);
+    console.log(`Org created successfull -- ✅ \n \t Sign Up successfull -- ✅\n \n`);
 })
 
 
