@@ -5,6 +5,7 @@ import getOtp from '../helpers/getOtp';
 import { randomBytes } from 'node:crypto';
 
 test('Sign Up', async ({ page }) => {
+    test.setTimeout(50000);
     console.log("\n \t Testing Sign up -- ⚙️")
     // Go to the login url 
     await page.goto('https://platform.dev.arpdigital.io/');

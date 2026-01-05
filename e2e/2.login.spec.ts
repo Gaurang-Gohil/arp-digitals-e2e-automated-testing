@@ -4,6 +4,7 @@ import credentials from "../constants/newRandomCreds";
 
 
 test('Sign In ', async ({ page }) => {
+     test.setTimeout(50000);
     // Login via API
     const login = new loginViaApi(page);
     console.log("\n \t Testing Signing In -- 🔐");

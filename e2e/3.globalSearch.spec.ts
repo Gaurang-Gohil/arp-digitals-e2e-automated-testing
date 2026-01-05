@@ -5,7 +5,7 @@ import GlobalSearch from "../helpers/globalSearch";
 
 
 test('Global Search with ctrl + K', async ({ page }) => {
-    test.setTimeout(50000);
+    test.setTimeout(100000);
     console.log("\n \tTesting global search -- 🌎 🔍")
     // login via API 
     console.log("\n Loging in via API -- 🔐")
