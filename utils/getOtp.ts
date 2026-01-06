@@ -1,4 +1,4 @@
-const getOtp = async (email:string, password:string) => {
+export default async function(email:string, password:string){
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 30000);
 
@@ -11,27 +11,29 @@ const getOtp = async (email:string, password:string) => {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ address: email, password: password })
-        }).then(res => res.json());
+        })
 
-        const token = tokenRes.token;
+        const tokenResBody = await tokenRes.json();
+        const token = tokenResBody.token;
 
         // Poll for OTP
         while (!otp) {
             const listRes = await fetch("https://api.mail.tm/messages", {
                 method: "GET",
                 headers: { Authorization: `Bearer ${token}` }
-            }).then(res => res.json());
-
-            const messageSummary = listRes['hydra:member']?.[0];
+            })
+            const listResBody = await listRes.json();
+            const messageSummary = listResBody['hydra:member']?.[0];
 
             if (messageSummary) {
                 const detailRes = await fetch(`https://api.mail.tm/messages/${messageSummary.id}`, {
                     method: "GET",
                     headers: { Authorization: `Bearer ${token}` }
-                }).then(res => res.json());
+                })
 
+                const detailResBody = await detailRes.json();
                 // Look for 6 digits in the full text body
-                const match = detailRes.text.match(/\d{6}/);
+                const match = detailResBody.text.match(/\d{6}/);
                 if (match) {
                     otp = match[0];
                     console.log(`OTP fetched successfully -- 🎊 \n OTP is ${otp} -- 🤫`)
@@ -42,7 +44,6 @@ const getOtp = async (email:string, password:string) => {
             // Wait 2 seconds before polling again
             await new Promise(resolve => setTimeout(resolve, 2000));
         }
-            
         return otp;
     } catch (err: any) {
         if (err.name === 'AbortError') {
@@ -54,5 +55,3 @@ const getOtp = async (email:string, password:string) => {
         clearTimeout(timeoutId);
     }
 }
-
-export default getOtp;

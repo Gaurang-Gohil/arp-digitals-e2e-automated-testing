@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
 import fs from 'fs';
 import path from 'node:path';
-import getOtp from '../helpers/getOtp';
-import { randomBytes } from 'node:crypto';
+import getOtp from '../utils/getOtp';
+import { generateRandomString } from '../utils/common';
 
 test('Sign Up', async ({ page }) => {
     test.setTimeout(50000);
@@ -103,9 +103,6 @@ const generateEmailAddress = async () => {
     const domainList = await fetch("https://api.mail.tm/domains", {
         method: "GET",
     })
-    const generateRandomString = (length: number): string => {
-        return randomBytes(Math.ceil(length / 2)).toString('hex').slice(0, length);
-    };
 
     const data = await domainList.json();
     const availbaleDomain = data['hydra:member'][0].domain;

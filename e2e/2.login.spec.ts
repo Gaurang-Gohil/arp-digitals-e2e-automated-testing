@@ -1,13 +1,12 @@
 import { test} from '@playwright/test';
-import { loginViaApi } from '../helpers/loginViaApi';
 import credentials from "../constants/newRandomCreds";
+import executeLogin from '../utils/loginViaApi';
 
 
 test('Sign In ', async ({ page }) => {
      test.setTimeout(50000);
     // Login via API
-    const login = new loginViaApi(page);
     console.log("\n \t Testing Signing In -- 🔐");
-    await login.executeLogin(credentials.email, credentials.password);
+    await executeLogin(page, credentials.email, credentials.password);
     console.log("\t Signing In Successful -- ✅ \n \n");
 })
