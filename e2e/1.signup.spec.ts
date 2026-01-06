@@ -24,7 +24,7 @@ test('Sign Up', async ({ page }) => {
     const credentials = await generateEmailAddress()
     await page.getByRole('textbox', { name: "Email" }).fill(credentials.email)
 
-    // Register the mail to mail.tm
+    // Register the mail to mail.gw
     await registerMail(credentials.email, credentials.password);
 
     // Fill the password
@@ -100,7 +100,7 @@ const getRandomName = () => {
 
 
 const generateEmailAddress = async () => {
-    const domainList = await fetch("https://api.mail.tm/domains", {
+    const domainList = await fetch("https://api.mail.gw/domains", {
         method: "GET",
     })
 
@@ -124,7 +124,7 @@ const generateEmailAddress = async () => {
 }
 
 const registerMail = async (email: string, password: string) => {
-    await fetch('https://api.mail.tm/accounts', {
+    await fetch('https://api.mail.gw/accounts', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

@@ -7,7 +7,7 @@ export default async function(email:string, password:string){
     try {
         // Get Token
         console.log("Fetchin OTP --- ⏳")
-        const tokenRes = await fetch('https://api.mail.tm/token', {
+        const tokenRes = await fetch('https://api.mail.gw/token', {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ address: email, password: password })
@@ -18,7 +18,7 @@ export default async function(email:string, password:string){
 
         // Poll for OTP
         while (!otp) {
-            const listRes = await fetch("https://api.mail.tm/messages", {
+            const listRes = await fetch("https://api.mail.gw/messages", {
                 method: "GET",
                 headers: { Authorization: `Bearer ${token}` }
             })
@@ -26,7 +26,7 @@ export default async function(email:string, password:string){
             const messageSummary = listResBody['hydra:member']?.[0];
 
             if (messageSummary) {
-                const detailRes = await fetch(`https://api.mail.tm/messages/${messageSummary.id}`, {
+                const detailRes = await fetch(`https://api.mail.gw/messages/${messageSummary.id}`, {
                     method: "GET",
                     headers: { Authorization: `Bearer ${token}` }
                 })
