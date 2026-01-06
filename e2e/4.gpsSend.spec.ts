@@ -54,9 +54,9 @@ test('Testing gps Send', async ({ page }) => {
             for (const currency of currentCountryDetails.currencies) {
                 // Log the current currency
                 currentTestingCurrency = currency.symbol;
-                console.log(`Testing for ${currency} -- 🧪💰💸`)
-
                 const currentTestingCurrencyRate = currency.value;
+                
+                console.log(`Testing for ${currentTestingCurrency} -- 🧪💰💸`)
 
                 // Select the currency
                 await page.locator('button[data-slot="select-trigger"]').nth(0).click();
@@ -102,7 +102,7 @@ test('Testing gps Send', async ({ page }) => {
                     await page.getByPlaceholder('Search recipient...').fill(currentCountryDetails.recipient)
                     await page.getByRole('option', { name: currentCountryDetails.recipient }).click();
                 }
-                console.log(`Test Successful for ${currency} -- 🤑`);
+                console.log(`Test Successful for ${currentTestingCountry} -- 🤑`);
             }
             console.log(`  Test Successful for ${currentTestingCountry} -- 🗿`);
         }
