@@ -102,7 +102,7 @@ test('Testing gps Send', async ({ page }) => {
                     await page.getByPlaceholder('Search recipient...').fill(currentCountryDetails.recipient)
                     await page.getByRole('option', { name: currentCountryDetails.recipient }).click();
                 }
-                console.log(`Test Successful for ${currentTestingCountry} -- 🤑`);
+                console.log(`Test Successful for ${currentTestingCurrency} -- 🤑`);
             }
             console.log(`  Test Successful for ${currentTestingCountry} -- 🗿`);
         }
