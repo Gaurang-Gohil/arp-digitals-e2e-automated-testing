@@ -4,7 +4,7 @@ import { AccountDetails } from "../constants/bankDetails";
 
 export default async function addBankAccount(page: Page, bankDetails: AccountDetails) {
     const title = page.getByRole('heading', { name: `Bank`, exact: false });
-    await expect(title).toBeVisible({ timeout: 10000 });
+    await expect(title).toBeVisible({ timeout: 1000 });
 
     // click the add bank account button
     await page.getByRole('button', { name: 'Add Bank Account' }).click()

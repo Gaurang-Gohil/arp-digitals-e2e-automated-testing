@@ -1,16 +1,16 @@
 import test, { expect } from "@playwright/test";
 import creds from "../constants/fundedAccountCreds";
 import CountryCurrencyThresholds from "../constants/countryCurrencyThresholds";
-import searchPage from "../utils/globalSearch";
-import executeLogin from "../utils/loginViaApi";
+import searchPage from "../helpers/globalSearch";
+import executeLogin from "../helpers/loginViaApi";
 
 test('Testing gps Send', async ({ page }) => {
-    test.setTimeout(5000000);
+    test.setTimeout(350000);
     console.log("\n \t Tesing GPS send -- 💸")
     // Login in the funded account via funded account 
-    console.log("\n Loging in via API -- 🔐")
+    console.log("\n Logging in via API -- 🔐")
     await executeLogin(page,creds.email, creds.password);
-    console.log("Loging Successful -- ✅ \n")
+    console.log("Logging Successful -- ✅ \n")
 
     // Get the send button
     await page.getByRole('button', { name: 'Send' }).click()
@@ -33,7 +33,7 @@ test('Testing gps Send', async ({ page }) => {
 
             // Find the title send 
             const title = page.getByRole('heading', { name: `Send`, exact: false });
-            await expect(title).toBeVisible({ timeout: 10000 });
+            await expect(title).toBeVisible({ timeout: 1000 });
 
             // Select a country
             await page.locator('button[data-slot="popover-trigger"]').nth(0).click();
@@ -66,7 +66,7 @@ test('Testing gps Send', async ({ page }) => {
 
                 // Get the summary details
                 const summaryCard = page.getByText('Our Rate');
-                await expect(summaryCard).toBeVisible({ timeout: 15000 })
+                await expect(summaryCard).toBeVisible({ timeout: 10000 })
 
                 // get button check if it's enabled and click it
                 const sendButton = page.getByRole('button', { name: 'Confirm & Send' });

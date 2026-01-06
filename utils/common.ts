@@ -1,9 +1,8 @@
 export function getRandomNumber(min: number, max: number) {
     // Use Math.ceil for min and Math.floor for max to ensure inclusive integers
     min = Math.ceil(min);
-    max = Math.floor(max);
+    max = Math.floor(max)-1;
 
-    // The formula for a range:
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 

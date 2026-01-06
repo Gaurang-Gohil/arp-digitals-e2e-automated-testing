@@ -1,6 +1,6 @@
 import { test} from '@playwright/test';
 import credentials from "../constants/newRandomCreds";
-import executeLogin from '../utils/loginViaApi';
+import executeLogin from '../helpers/loginViaApi';
 
 
 test('Sign In ', async ({ page }) => {
@@ -10,3 +10,4 @@ test('Sign In ', async ({ page }) => {
     await executeLogin(page, credentials.email, credentials.password);
     console.log("\t Signing In Successful -- ✅ \n \n");
 })
+

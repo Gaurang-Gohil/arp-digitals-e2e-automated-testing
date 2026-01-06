@@ -1,4 +1,4 @@
 export default {
-    email: 'testuser8751cf74@airsworld.net',
+    email: 'kvnsoqpa@guerrillamailblock.com',
     password: 'SecurePassword1!'
         };

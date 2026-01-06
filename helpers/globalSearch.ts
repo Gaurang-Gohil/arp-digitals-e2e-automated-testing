@@ -14,5 +14,5 @@ import { Page } from "@playwright/test";
         // write name of the section
         await searchInput.fill(sectionName);
         await page.getByRole('option', { name: sectionName}).click();
-        await expect(searchList).toBeHidden({ timeout: 10000 });
+        await expect(searchList).toBeHidden({ timeout: 1000 });
     }

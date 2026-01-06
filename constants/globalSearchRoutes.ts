@@ -1,4 +1,4 @@
-export const sectionNameRoutes = {
+export const sectionRoutes = {
     'Overview': '/wallet',
     'Deposit': '/wallet/deposit',
     'Withdraw': '/wallet/withdraw',
@@ -14,4 +14,6 @@ export const sectionNameRoutes = {
     'API Keys': '/organization/api-keys',
     'Webhooks': '/organization/webhooks',
     'Settings': '/settings'
-}
+} as const;
+
+export type sectionNameRoutes = keyof typeof sectionRoutes;

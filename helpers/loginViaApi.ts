@@ -1,6 +1,6 @@
 import { expect } from "@playwright/test";
 import { Page } from "@playwright/test";
-import getOtp from './getOtp';
+import getOtp from '../utils/getOtp';
 
 
     // This fuction is a common for randomNewLogin and login with preFunded account (No need for another helper for preFunded account)

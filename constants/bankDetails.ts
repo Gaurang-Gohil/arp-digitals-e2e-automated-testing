@@ -1,20 +1,23 @@
 import { generateRandomString, getRandomName, getRandomNumber } from "../utils/common";
 
+const currencyPair: CurrencyPair[] = [
+    { currency: "BHD", countryCode: "BHR" },
+    { currency: "AED", countryCode: "ARE" },
+    { currency: "SAR", countryCode: "SAU" },
+    { currency: "USD", countryCode: "USA" },
+]
 export default function generateBankDetails() {
     let bankDetails: AccountDetails[] = [];
 
-    const currencyList: CountryList[] = ["BHD", "SAR", "AED", "USD"]
-    const countryCodeList = ["ARE", "BHR", "SAU", "USA"]
-
-    for (const currency of currencyList) {
+    for (const currency of currencyPair) {
         let bankDetail: AccountDetails = {
-            currency: currency,
-            countryCode: countryCodeList[getRandomNumber(0,countryCodeList.length)],
-            accountNumber: getRandomNumber(1000000000,  99999999999),
+            currency: currency.currency,
+            countryCode: currencyPair[getRandomNumber(0, currencyPair.length)].countryCode,
+            accountNumber: getRandomNumber(1000000000, 99999999999),
             beneficiaryName: getRandomName(),
             bankName: getRandomName(),
             swift_bic: generateRandomString(10),
-            iban: generateRandomIban(currency)
+            iban: generateRandomIban(currency.currency)
         }
         bankDetails.push(
             bankDetail
@@ -24,7 +27,7 @@ export default function generateBankDetails() {
 }
 
 export interface AccountDetails {
-    currency: CountryList,
+    currency: CurrencyList,
     countryCode: string,
     beneficiaryName: string,
     bankName: string,
@@ -33,10 +36,16 @@ export interface AccountDetails {
     iban: string
 }
 
-export type CountryList = "BHD" | "SAR" | "AED" | "USD" 
+export interface CurrencyPair {
+    currency: CurrencyList,
+    countryCode: CountryList
+}
+
+export type CurrencyList = "BHD" | "SAR" | "AED" | "USD"
+export type CountryList = "ARE" | "BHR" | "SAU" | "USA"
 
 
-const generateRandomIban = (country: CountryList) =>{    
-    const firstLetters = country.slice(0,2);
-    return `${firstLetters}${getRandomNumber(1007199254740980,9007199254740991)}${getRandomNumber(1007199254740980,9007199254740991)}`
+const generateRandomIban = (country: CurrencyList) => {
+    const firstLetters = country.slice(0, 2);
+    return `${firstLetters}${getRandomNumber(1007199254740980, 9007199254740991)}${getRandomNumber(1007199254740980, 9007199254740991)}`
 }
